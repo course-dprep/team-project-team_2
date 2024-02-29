@@ -27,6 +27,24 @@ merged_lists$mistery <- ifelse(grepl("mistery", merged_lists$genres, ignore.case
 merged_lists$scifi <- ifelse(grepl("sci-fi", merged_lists$genres, ignore.case = TRUE), 1, 0)
 
 #calculate the average rating per genre --- does not work yet -- first also create dummy variable for years
+years<- c(1892,1893,1894,1895) 
+
+average_ratings_per_year <- list()
+
+for (years in years) {
+
+  filtered_data <- merged_lists %>% 
+  filter(startYear == years)
+
+  average_ratings <- filtered_data %>%
+  group_by(animation) %>%
+  summarise(mean_rating = mean(averageRating, na.rm = TRUE)) 
+  
+  average_ratings[[as.character(years)]] <- average_ratings }
+  
+
+filtered_data <- merged_lists %>% 
+  filter(startYear == 1892)
 
 # Calculate the sum of (averageRating * dummy) for each genre
 sum_ratings <- sapply(names(merged_lists)[3:ncol(merged_lists)], function(comedy) {
