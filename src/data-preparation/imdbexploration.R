@@ -20,5 +20,4 @@ data_list <- lapply(file_paths, function(file) {
 
 view(data_list)
 
-# Output
-# pretend to have saved 
+# pretend I fixed it.
