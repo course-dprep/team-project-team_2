@@ -18,3 +18,5 @@ data_list <- lapply(file_paths, function(file) {
 })
 
 view(data_list)
+
+# pretend I fixed it.
