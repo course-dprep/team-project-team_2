@@ -1,6 +1,7 @@
+# Setup
 library(tidyverse)
 
-
+# Input
 
 title_basics_data <- read_tsv('title.basics.tsv.gz', n_max = 100)
 
