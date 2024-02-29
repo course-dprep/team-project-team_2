@@ -1,6 +1,7 @@
+# Setup
 library(tidyverse)
 
-
+# Input
 
 title_basics_data <- read_tsv('title.basics.tsv.gz', n_max = 100)
 
@@ -18,3 +19,6 @@ data_list <- lapply(file_paths, function(file) {
 })
 
 view(data_list)
+
+# Output
+# pretend to have saved 
