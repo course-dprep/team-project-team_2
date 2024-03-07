@@ -1,10 +1,16 @@
 library(tidyverse)
 
-setwd("C:/Users/apper/OneDrive/MAy5b1/SkillsDaPr")
+setwd("C:/dPrep/data/title.basics.tsv")
 
+<<<<<<< HEAD
+title_basics_data <- read_tsv('basic.tsv', n_max = 100)
+
+title_ratings_data <- read_tsv('ratings.tsv', n_max = 100)
+=======
 title_basics_data <- read_tsv('title.basics.tsv.gz')
 
 title_ratings_data <- read_tsv('title.ratings.tsv.gz')
+>>>>>>> d9dfde720d60b85f56ebdbcd71f1da5c3de764dc
 
 head(title_basics_data)
 head(title_ratings_data)
