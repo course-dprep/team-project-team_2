@@ -1,23 +1,17 @@
 # Setup
 library(tidyverse)
 
-# Input
+#setwd("C:/dPrep/data/title.basics.tsv")
 
-title_basics_data <- read_tsv('title.basics.tsv.gz', n_max = 100)
+title_basics_data <- read_tsv('title.basics.tsv.gz')
 
-title_ratings_data <- read_tsv('title.ratings.tsv.gz', n_max = 100)
+title_ratings_data <- read_tsv('title.ratings.tsv.gz')
 
-view(title_basics_data)
-view(title_ratings_data)
 
-# List of file paths
-file_paths <- c("title.basics.tsv.gz", "title.ratings.tsv.gz")
+# merge the two files
+merged_lists <- filtered_title_basics %>% left_join(title_ratings_data, by= 'tconst')
 
-# Load the first 1000 rows of each TSV file into a list of data frames
-data_list <- lapply(file_paths, function(file) {
-  read_tsv(file, n_max = 1000)
-})
+#remove NA from the ratings collumn
+movies <- merged_lists %>% na.omit(merged_lists$averageRating)
 
-view(data_list)
-
-# pretend I fixed it.
+#final list is called movies for further data wranglin
