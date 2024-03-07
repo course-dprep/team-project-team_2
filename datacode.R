@@ -5,15 +5,18 @@
 #separate genre intp its own column
 
 # Load required packages
-library(tidyverse)
+
 install.packages("tidyr")
-library(tidyr)
+
 install.packages("dplyr")
-library(dplyr)
+
 install.packages("ggplot2")
+
+
 library(ggplot2)
-
-
+library(dplyr)
+library(tidyr)
+library(tidyverse)
 ####
 
 #create a dummy variable for each genre
@@ -28,54 +31,14 @@ movies$fantasy <- ifelse(grepl("fantasy", movies$genres, ignore.case = TRUE), 1,
 movies$crime <- ifelse(grepl("crime", movies$genres, ignore.case = TRUE), 1, 0)
 movies$thriller <- ifelse(grepl("thriller", movies$genres, ignore.case = TRUE), 1, 0)
 movies$mistery <- ifelse(grepl("mistery", movies$genres, ignore.case = TRUE), 1, 0)
-movies$scifi <- ifelse(grepl("sci-fi", movies$genres, ignore.case = TRUE), 1, 0)
+movies$scifi <- ifelse(grepl("scifi", movies$genres, ignore.case = TRUE), 1, 0)
 
-#calculate the average rating per genre --- does not work yet -- first also create dummy variable for years
-years<- c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023) 
-genre <- c(movies$comedy, movies$documentary, movies$animation, movies$romance, movies$news, movies$sport, movies$horror, movies$fantasy, movies$crime, movies$thriller, movies$mistery)#missing sci-fi
-
-
-average_ratings_per_year <- list()
-
-for (years in years) {
-
-  filtered_data <- movies %>% 
-  filter(startYear == years)
-
-  average_ratings <- filtered_data %>%
-  group_by(animation) %>%
-  summarise(mean_rating = mean(averageRating, na.rm = TRUE)) 
-  
-  average_ratings[[as.character(years)]] <- average_ratings }
-  
-
-filtered_data <- movies %>% 
-  filter(startYear == 2000)
-
-# Calculate the sum of (averageRating * dummy) for each genre
-sum_ratings <- sapply(names(movies)[3:ncol(movies)], function(comedy) {
-  sum(movies$averageRating * movies$comedy)
-})
-
-# Calculate the count of observations where dummy = 1 for each genre
-count_ones <- sapply(names(movies)[3:ncol(movies)], function(comedy) {
-  sum(movies$comedy)
-})
-
-# Calculate the average rating for each genre
-avg_rating_by_genre <- sum_ratings / count_ones
-
-view(avg_rating_by_genre)
-
-
-
-##try 2
 
 # List of years
 years <- c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023) 
 
 # List of genres
-genre <- c("comedy", "documentary", "animation", "romance", "news", "sport", "horror", "fantasy", "crime", "thriller", "mistery")
+genre <- c("comedy", "documentary", "animation", "romance", "news", "sport", "horror", "fantasy", "crime", "thriller", "mistery", "scifi")
 
 # Initialize an empty list to store the results
 average_ratings_per_year <- list()
@@ -128,4 +91,4 @@ ggplot(average_ratings_df, aes(x = Year, y = AverageRating, color = Genre, group
   labs(x = "Year", y = "Average Rating", title = "Variation of Ratings by Genre Over Years") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-##r
+
