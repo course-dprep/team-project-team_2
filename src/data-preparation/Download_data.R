@@ -20,5 +20,5 @@ urls <- c(
 names <- c("Basics", "Ratings")
 
 for (i in 1:length(urls)) {
-  download.file(urls[i], paste0("../../data/", names[i], ".tsv.gz"), mode = "wb")
+  download.file(urls[i], paste0("data/", names[i], ".tsv.gz"), mode = "wb")
 }
