@@ -89,3 +89,35 @@ ggplot(average_ratings_df, aes(x = Year, y = AverageRating, color = Genre, group
   labs(x = "Year", y = "Average Rating", title = "Variation of Ratings by Genre Over Years") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+#_______________________________________________________________________________________________________________________
+#Nieuw stuk Robin
+
+#plotting the distribution of movie ratings
+norm_dist <- rnorm(27056, mean = mean(movies$averageRating), sd = sd(movies$averageRating))
+plot(density(norm_dist), main = "Normal Distribution of Movie Ratings", xlab = "Average Rating", ylab = "Density")
+
+
+# filteren op comedy movies
+Comedy_num <- movies %>%
+  filter(comedy == 1) %>%
+  select(averageRating)
+
+# generate a normal distribution of movie ratings for the genre comedy
+comedy_dist <- rnorm(n = nrow(Comedy_num), mean = mean(Comedy_num$averageRating), sd = sd(Comedy_num$averageRating))
+plot(density(comedy_dist), main = "Normal Distribution of Comedy Movie Ratings", xlab = "Average Rating", ylab = "Density")
+
+# Create a data frame combining both distributions
+combined_data <- data.frame(
+  Distribution = c(rep("2. All genres", length(norm_dist)), rep("1.Comedy", length(comedy_dist))),
+  Ratings = c(norm_dist, comedy_dist))
+
+# Create a density plot
+ggplot(combined_data, aes(x = Ratings, fill = Distribution)) +
+  geom_density(alpha = 0.5) +
+  labs(title = "Density Plot of All genres Ratings and Comedy Ratings",
+       x = "Ratings",
+       y = "Density") +
+  scale_fill_manual(values = c("blue", "orange"))
+  
