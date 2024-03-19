@@ -188,7 +188,7 @@ rating_summary_pivot <- rating_summary_pivot %>%
 get_color <- colorRampPalette(c("red", "green"))
 
 # Create bar plot
-ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference, fill = difference)) +
+plot_changetotalratingpergenre<- ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference, fill = difference)) +
   geom_bar(stat = "identity") +
   scale_fill_gradientn(colors = get_color(100), limits = range(rating_summary_pivot$difference), name = "Difference in Rating") +
   labs(title = "Difference in Average Rating per Genre (2000 vs 2023)",
@@ -196,5 +196,8 @@ ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference
        y = "Difference in Rating") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#save plot in pdf
+ggsave("gen/output/change_in_rating_per_genre_2000-2023.pdf", plot_changetotalratingpergenre)
 
 
