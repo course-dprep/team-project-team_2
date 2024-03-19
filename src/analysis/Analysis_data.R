@@ -1,6 +1,7 @@
 
 #prepare data
-
+movies <- movies %>% select(!endYear)
+movies <- movies %>% select(!isAdult)
 #separate genre intp its own column
 
 # Load required packages
@@ -151,6 +152,28 @@ summary(model)
 tab_model(model, show.ci = FALSE, p.style = "stars", dv.labels = c("Linear Regression Rating & Genres"))
 
 
+
+#____________________
+#plot overall rating movies in years
+
+average_ratings_per_yearplot <- movies %>%
+  group_by(startYear) %>%
+  summarise(avg_rating = mean(averageRating, na.rm = TRUE))
+
+average_ratings_per_yearplot$startYear <- as.character(average_ratings_per_yearplot$startYear)
+
+plot_avgratingperyear <- ggplot(average_ratings_per_yearplot, aes(x = startYear, y = avg_rating, group = 1)) +
+  geom_line() +  
+  geom_point() +
+  labs(title = "Average Movie Ratings by Year",
+       x = "Year",
+       y = "Average Rating") +
+  ylim(5.5, 7) +
+  scale_x_discrete(labels = function(x) substring(x, 3))
+
+#save plot in pdf
+ggsave("gen/output/average_ratings_per_yearplot.pdf", plot_avgratingperyear)
+
 #_______________________________________________________________________________________________________________________
 #Nieuw stuk Remi
 
@@ -196,5 +219,6 @@ ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference
        y = "Difference in Rating") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
 
 
