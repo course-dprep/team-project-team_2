@@ -1,4 +1,7 @@
 #prepare data
+dataset <- dataset %>% select(!endyear)
+dataset <- dataset %>% select(!isAdult)
+
 
 #separate genre intp its own column
 
