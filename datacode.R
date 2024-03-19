@@ -2,7 +2,6 @@
 movies <- movies %>% select(!endyear)
 movies <- movies %>% select(!isAdult)
 
-
 #separate genre intp its own column
 
 # Load required packages
