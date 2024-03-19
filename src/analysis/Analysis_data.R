@@ -52,7 +52,6 @@ movies$thriller <- ifelse(grepl("thriller", movies$genres, ignore.case = TRUE), 
 movies$mistery <- ifelse(grepl("mistery", movies$genres, ignore.case = TRUE), 1, 0)
 movies$scifi <- ifelse(grepl("scifi", movies$genres, ignore.case = TRUE), 1, 0)
 
-
 # List of years
 years <- c(2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023) 
 
@@ -150,3 +149,52 @@ summary(model)
 
 #set results of linear regression in a table
 tab_model(model, show.ci = FALSE, p.style = "stars", dv.labels = c("Linear Regression Rating & Genres"))
+
+
+#_______________________________________________________________________________________________________________________
+#Nieuw stuk Remi
+
+# Read the data from TSV file
+movies_data <- read.delim("data/movies_data.tsv", header = TRUE, stringsAsFactors = FALSE)
+
+# Convert start year and rating to appropriate data types
+movies_data$startYear <- as.integer(movies_data$startYear)
+movies_data$averageRating <- as.numeric(movies_data$averageRating)
+
+# Split multiple genres and create rows for each individual genre
+movies_data <- movies_data %>%
+  separate_rows(genres, sep = ",\\s*")
+
+# Filter the data for startYear = 2000 and 2023
+filtered_data <- movies_data %>%
+  filter(startYear == 2000 | startYear == 2023)
+
+# Calculate the average rating for each genre and startYear
+rating_summary <- filtered_data %>%
+  group_by(genres, startYear) %>%
+  summarise(avg_rating = mean(averageRating))
+
+# Pivot the data to have startYear as columns
+rating_summary_pivot <- pivot_wider(rating_summary, names_from = startYear, values_from = avg_rating)
+
+# Calculate the difference in average rating between startYear = 2000 and 2023
+rating_summary_pivot$difference <- rating_summary_pivot$"2023" - rating_summary_pivot$"2000"
+
+# Reorder genres based on difference in rating
+rating_summary_pivot <- rating_summary_pivot %>%
+  arrange(difference)
+
+# Define custom color function
+get_color <- colorRampPalette(c("red", "green"))
+
+# Create bar plot
+ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference, fill = difference)) +
+  geom_bar(stat = "identity") +
+  scale_fill_gradientn(colors = get_color(100), limits = range(rating_summary_pivot$difference), name = "Difference in Rating") +
+  labs(title = "Difference in Average Rating per Genre (2000 vs 2023)",
+       x = "Genre",
+       y = "Difference in Rating") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
