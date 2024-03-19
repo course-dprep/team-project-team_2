@@ -1,3 +1,6 @@
+#download movies tsv
+movies <- read_tsv("data/movies_data.tsv")
+
 #prepare data
 movies <- movies %>% select(!endyear)
 movies <- movies %>% select(!isAdult)
