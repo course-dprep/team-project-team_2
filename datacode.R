@@ -10,11 +10,17 @@ install.packages("dplyr")
 
 install.packages("ggplot2")
 
+install.packages("stats")
+
+install.packages("sjPlot")
 
 library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(tidyverse)
+library(stats)
+library(sjPlot)
+
 ####
 
 #create a dummy variable for each genre
@@ -121,3 +127,11 @@ ggplot(combined_data, aes(x = Ratings, fill = Distribution)) +
        y = "Density") +
   scale_fill_manual(values = c("blue", "orange"))
   
+
+
+#perform linear regression
+model <- lm(averageRating ~ comedy + documentary + animation + romance + news + sport + horror + fantasy + crime + mistery + thriller + scifi, data = movies)
+summary(model)
+
+#set results of linear regression in a table
+tab_model(model, show.ci = FALSE, p.style = "stars", dv.labels = c("Linear Regression Rating & Genres"))
