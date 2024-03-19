@@ -1,9 +1,4 @@
-#install packages
-install.packages("tidyverse")
-install.packages("dplyr")
-install.packages("readr")
-install.packages("tidyr")
-install.packages("ggplot2")
+#loading packages
 library(tidyverse)
 library(dplyr)
 library(ggplot2)

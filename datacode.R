@@ -1,3 +1,9 @@
+#Loading packages
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(tidyverse)
+
 #download movies tsv
 movies <- read_tsv("data/movies_data.tsv")
 
@@ -6,22 +12,6 @@ movies <- movies %>% select(!endyear)
 movies <- movies %>% select(!isAdult)
 
 #separate genre intp its own column
-
-# Load required packages
-
-install.packages("tidyr")
-
-install.packages("dplyr")
-
-install.packages("ggplot2")
-
-
-library(ggplot2)
-library(dplyr)
-library(tidyr)
-library(tidyverse)
-####
-
 #create a dummy variable for each genre
 movies$comedy <- ifelse(grepl("comedy", movies$genres, ignore.case = TRUE), 1, 0)
 movies$documentary <- ifelse(grepl("documentary", movies$genres, ignore.case = TRUE), 1, 0)
