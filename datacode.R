@@ -1,7 +1,6 @@
 #prepare data
-dataset <- dataset %>% select(!endyear)
-dataset <- dataset %>% select(!isAdult)
-
+movies <- movies %>% select(!endyear)
+movies <- movies %>% select(!isAdult)
 
 #separate genre intp its own column
 
