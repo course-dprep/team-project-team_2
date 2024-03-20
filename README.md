@@ -52,3 +52,7 @@ This project was a group project conducted by six members following the course D
 - [Remi Benschop](https://github.com/RemiBenschop) - email: r.benschop@tilburguniversity.edu
 - [Robin Hogenboom](https://github.com/robinhogenboom) - email: r.hogenboom@tilburguniversity.edu
 - [Sohaib Eddarkaoui](https://github.com/SohaibEd) - email: s.eddarkaoui@tilburguniversity.edu
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdfff07af35cdb556af1d9ad8567d5892ca87269
