@@ -45,5 +45,11 @@ Point interested users to any related literature and/or documentation.
 
 ## About
 
-Explain who has contributed to the repository. You can say it has been part of a class you've taken at Tilburg University.
+This project was a group project conducted by six members following the course Data Preparation and Workflow Management of the MSc Marketing Analytics at Tilburg University. The team members are: 
+[Arthur Appert](https://github.com/Arth77) - a.p.appert@tilburguniversity.edu 
+[Boris Oostveen](https://github.com/OostveenBoris) - b.j.j.oostveen@tilburguniversity.edu
+[Goof Hendriks](https://github.com/GoofHendriks) - g.hendriks@tilburguniversity.edu
+[Remi Benschop](https://github.com/RemiBenschop) - r.benschop@tilburguniversity.edu
+[Robin Hogenboom](https://github.com/robinhogenboom) - r.hogenboom@tilburguniversity.edu
+[Sohaib Eddarkaoui](https://github.com/SohaibEd) - s.eddarkaoui@tilburguniversity.edu
 
