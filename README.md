@@ -1,13 +1,12 @@
-# Project title
+# How do movie ratings differ per genre over time?
 
 __Exploring Evolution of IMDB Ratings Across Genres: A Data Preparation Project__
 
 
 ## Motivation
 
-Motivate your research question or business problem. Clearly explain which problem is solved.
 
-_In the vast landscape of cinematic arts, understanding the evolution of audience preferences and the trajectory of film genres over time is paramount. The Internet Movie Database (IMDB) stands as a treasure trove of information, providing extensive data on films spanning decades. This project embarks on a journey to dissect IMDB data, delving into the nuances of various genres and unraveling the intricate patterns underlying their ratings evolution._
+The filmmaking industry is a challeging market due to high and stiff competition. Understanding how different genres affect movie ratings could give filmmakers an competitive advantage. It's interesting to compare the average ratings of movies within a genre to see if their overall quality, as judged by the audiences, is increasing or decreasing. Recognizing trends in genres with consistently high, or increasing audience ratings provides a strong basis for making successful films. By using this information, filmmakers can tailor their  decisions about the choice of a certain genre to meet audience expectations and maximize the chances of success in a crowded market. 
 
 
 ## Method and results
