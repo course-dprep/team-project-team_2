@@ -44,6 +44,22 @@ Generate plots!!
 
 ```
 
+
+## Dependencies
+
+The installation guides can be found at http://tilburgsciencehub.com/.
+
+- R. [Installation guide](https://tilburgsciencehub.com/building-blocks/configure-your-computer/statistics-and-computation/r/).
+- Make. [Installation guide](https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/).
+
+- Necessary R packages to run the R script:
+```
+install.packages("tidyr")install.packages("dplyr")install.packages("ggplot2")install.packages("tidyverse")install.packages("readr")
+install.packages("gtsummary")
+install.packages("stats")
+install.packages("sjPlot")
+```
+
 ## Running instructions
 
 ### Required programs
