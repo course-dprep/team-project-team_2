@@ -7,7 +7,7 @@ output:
 
 __Exploring Evolution of IMDB Ratings Across Genres: A Data Preparation Project__
 
-## introduction
+## Introduction
 Ever wondered if certain types of movies tend to receive better ratings on IMDb? This study delves into that question, aiming to uncover patterns in movie ratings across different genres. We'll examine whether action movies, thrillers, or other genres consistently outperform others in terms of ratings. 
 
 
