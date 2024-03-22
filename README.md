@@ -40,17 +40,18 @@ Generated plots!!
 ## Repository overview
 
 ```
-- data
-- gen
-  -output
-  -temp
-- src
-  - analysis    
-  - data-preparation
-- .gitignore
-- README.md
-- makefile
-
+├── data
+├── gen
+│   ├── output
+│   └──  temp
+├── src
+│   ├── analysis
+│   └── data-preparation
+├── gitignore
+├── LICENSE
+├── README.md
+├── install_packages.R
+└── makefile
 ```
 
 
