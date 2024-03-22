@@ -22,10 +22,19 @@ The filmmaking industry is a challeging market due to high and stiff competition
 To address the research questions, the analysis employed several approaches. Initially, plots were generated to visualize the average ratings across various movie genres spanning from 2000 to 2023. These plots facilitated the observation of any discernible trends or patterns in the data. Additionally, a linear regression analysis was conducted to investigate the potential impact of different movie genres on ratings. This statistical method aided in identifying genres that may significantly influence viewer ratings.
 
 #### **Results**
-Generate plots!!
+Generated plots!!
 
-#### The average movie ratings by year
-![The average movie ratings by year](https://github.com/course-dprep/team-project-team_2/blob/main/gen/output/average_ratings_per_yearplot.pdf) 
+
+<img src="https://github.com/course-dprep/team-project-team_2/releases/download/Plots/Average_movie_ratings_by_year.png" alt="__Probability of being a hit__" width="600" />
+
+
+<img src="https://github.com/course-dprep/team-project-team_2/releases/download/Plots/Density_plot_rating_all_genres_vs_comedy.png" alt="__Probability of being a hit__" width="600" />
+
+
+<img src="https://github.com/course-dprep/team-project-team_2/releases/download/Plots/Difference_in_avg_rating.genre.png" alt="__Probability of being a hit__" width="600" />
+
+
+<img src="https://github.com/course-dprep/team-project-team_2/releases/download/Plots/Variation_of_Ratings_by_Genre_over_Years.png" alt="__Probability of being a hit__" width="600" />
 
 
 ## Repository overview
