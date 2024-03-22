@@ -93,11 +93,6 @@ make clean
 ```
 
 
-## More resources
-
-Point interested users to any related literature and/or documentation.
-
-
 ## About
 
 This project was a group project conducted by six members following the course Data Preparation and Workflow Management of the MSc Marketing Analytics at Tilburg University. The team members are:
