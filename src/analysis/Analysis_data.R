@@ -1,39 +1,19 @@
-
-#prepare data
-movies <- movies %>% select(!endYear)
-movies <- movies %>% select(!isAdult)
-#separate genre intp its own column
-
-# Load required packages
-
-install.packages("tidyr")
-
-install.packages("dplyr")
-
-install.packages("ggplot2")
-
-install.packages("stats")
-
-install.packages("sjPlot")
-
+install.packages("gtsummary")
+library(gtsummary)
 #Loading packages
-
 library(ggplot2)
 library(dplyr)
 library(tidyr)
 library(tidyverse)
-
 library(stats)
 library(sjPlot)
-
 ####
 
-
 #download movies tsv
-movies <- read_tsv("data/movies_data.tsv")
+movies <- read_tsv("../../gen/temp/movies_data.tsv")
 
 #prepare data
-movies <- movies %>% select(!endyear)
+movies <- movies %>% select(!endYear)
 movies <- movies %>% select(!isAdult)
 
 #separate genre intp its own column
@@ -94,9 +74,6 @@ average_ratings_df <- do.call(rbind, lapply(names(average_ratings_per_year), fun
   )
 }))
 
-# Print the resulting data frame
-print(average_ratings_df)
-
 # Create graph to visualize data
 # Convert Year to a factor to preserve ordering on x-axis
 average_ratings_df$Year <- as.factor(average_ratings_df$Year)
@@ -109,13 +86,10 @@ plot_avgratingsgenresyear <- ggplot(average_ratings_df, aes(x = Year, y = Averag
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#save plot in pdf
-ggsave("gen/output/average_rating_genres_each_year.pdf", plot_avgratingsgenresyear)
+####save plot in pdf
+ggsave("../../gen/output/average_rating_genres_each_year.pdf", plot_avgratingsgenresyear)
 
 
-
-#_______________________________________________________________________________________________________________________
-#Nieuw stuk Robin
 
 #plotting the distribution of movie ratings
 norm_dist <- rnorm(27056, mean = mean(movies$averageRating), sd = sd(movies$averageRating))
@@ -144,22 +118,33 @@ plot_distrmovieratings <- ggplot(combined_data, aes(x = Ratings, fill = Distribu
        y = "Density") +
   scale_fill_manual(values = c("blue", "orange"))
   
-
+####save plot in pdf
+ggsave("../../gen/output/distribution_movie_ratings_vs_comedy.pdf", plot_distrmovieratings)
 
 #perform linear regression
 model <- lm(averageRating ~ comedy + documentary + animation + romance + news + sport + horror + fantasy + crime + mistery + thriller + scifi, data = movies)
-summary(model)
+
+##################################################################
+# Create a summary table
+#tbl <- tbl_regression(model, conf.level = 0.95)  # specify confidence level
+
+# Print the summary table
+#tbl
+
+# Save the table to a PDF
+#pdf(file = "../../gen/output/table_linear_regression.pdf")
+#tbl
+#dev.off()
+
 
 #set results of linear regression in a table
-tab_model(model, show.ci = FALSE, p.style = "stars", dv.labels = c("Linear Regression Rating & Genres"))
+###table_linear_regression <- tab_model(model, show.ci = FALSE, p.style = "stars", dv.labels = c("Linear Regression Rating & Genres"))
 
-#save plot in pdf
-ggsave("gen/output/distribution_movie_ratings_vs_comedy.pdf", plot_distrmovieratings)
+####save table in pdf
+####ggsave("../../gen/output/table_linear_regression.pdf", table_linear_regression)
+##################################################################
 
-
-#____________________
 #plot overall rating movies in years
-
 average_ratings_per_yearplot <- movies %>%
   group_by(startYear) %>%
   summarise(avg_rating = mean(averageRating, na.rm = TRUE))
@@ -175,14 +160,12 @@ plot_avgratingperyear <- ggplot(average_ratings_per_yearplot, aes(x = startYear,
   ylim(5.5, 7) +
   scale_x_discrete(labels = function(x) substring(x, 3))
 
-#save plot in pdf
-ggsave("gen/output/average_ratings_per_yearplot.pdf", plot_avgratingperyear)
+######save plot in pdf
+ggsave("../../gen/output/average_ratings_per_yearplot.pdf", plot_avgratingperyear)
 
-#_______________________________________________________________________________________________________________________
-#Nieuw stuk Remi
 
 # Read the data from TSV file
-movies_data <- read.delim("data/movies_data.tsv", header = TRUE, stringsAsFactors = FALSE)
+movies_data <- read.delim("../../gen/temp/movies_data.tsv", header = TRUE, stringsAsFactors = FALSE)
 
 # Convert start year and rating to appropriate data types
 movies_data$startYear <- as.integer(movies_data$startYear)
@@ -224,6 +207,6 @@ plot_changeratingssince2000 <- ggplot(rating_summary_pivot, aes(x = reorder(genr
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-#save plot in pdf
-ggsave("gen/output/total_genre_ratings_change_2000-2023.pdf", plot_changeratingssince2000)
+####save plot in pdf
+ggsave("../../gen/output/total_genre_ratings_change_2000-2023.pdf", plot_changeratingssince2000)
 
