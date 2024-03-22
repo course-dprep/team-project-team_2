@@ -7,7 +7,7 @@ output:
 
 __Exploring Evolution of IMDB Ratings Across Genres: A Data Preparation Project__
 
-##introduction
+## introduction
 Ever wondered if certain types of movies tend to receive better ratings on IMDb? This study delves into that question, aiming to uncover patterns in movie ratings across different genres. We'll examine whether action movies, thrillers, or other genres consistently outperform others in terms of ratings. 
 
 
@@ -25,7 +25,8 @@ To address the research questions, the analysis employed several approaches. Ini
 Generate plots!!
 
 #### The average movie ratings by year
-<embed src="https://github.com/course-dprep/team-project-team_2/blob/main/gen/output/average_ratings_per_yearplot.pdf" type="application/pdf" width="100%" height="600px" />
+![The average movie ratings by year](https://github.com/course-dprep/team-project-team_2/blob/main/gen/output/average_ratings_per_yearplot.pdf) 
+
 
 ## Repository overview
 
