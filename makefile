@@ -1,5 +1,8 @@
-all: data-preparation analysis
+all: install_packages data-preparation analysis
 
+install_packages:
+	make -C install_packages
+	
 analysis:
 	make -C src/analysis 
 
