@@ -1,6 +1,14 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 # How do movie ratings differ per genre over time?
 
 __Exploring Evolution of IMDB Ratings Across Genres: A Data Preparation Project__
+
+##introduction
+Ever wondered if certain types of movies tend to receive better ratings on IMDb? This study delves into that question, aiming to uncover patterns in movie ratings across different genres. We'll examine whether action movies, thrillers, or other genres consistently outperform others in terms of ratings. 
 
 
 ## Motivation
@@ -10,32 +18,58 @@ The filmmaking industry is a challeging market due to high and stiff competition
 
 
 ## Method and results
+#### **Methods**
+To address the research questions, the analysis employed several approaches. Initially, plots were generated to visualize the average ratings across various movie genres spanning from 2000 to 2023. These plots facilitated the observation of any discernible trends or patterns in the data. Additionally, a linear regression analysis was conducted to investigate the potential impact of different movie genres on ratings. This statistical method aided in identifying genres that may significantly influence viewer ratings.
 
-First, introduce and motivate your chosen method, and explain how it contributes to solving the research question/business problem.
+#### **Results**
+Generate plots!!
 
-Second, summarize your results concisely. Make use of subheaders where appropriate.
-
+#### The average movie ratings by year
+<embed src="https://github.com/course-dprep/team-project-team_2/blob/main/gen/output/average_ratings_per_yearplot.pdf" type="application/pdf" width="100%" height="600px" />
 
 ## Repository overview
 
-Provide an overview of the directory structure and files, for example:
-
 ```
-├── README.md
-├── data
-├── gen
-│   ├── analysis
-│   ├── data-preparation
-│   └── paper
-└── src
-    ├── analysis
-    ├── data-preparation
-    └── paper
+- data
+- gen
+  -output
+  -temp
+- src
+  - analysis    
+  - data-preparation
+- .gitignore
+- README.md
+- makefile
+
 ```
 
 ## Running instructions
 
-Explain to potential users how to run/replicate your workflow. If necessary, touch upon the required input data, which secret credentials are required (and how to obtain them), which software tools are needed to run the workflow (including links to the installation instructions), and how to run the workflow.
+### Required programs
+Required programs to install and run: 
+
+* Git - to be able to run the repository locally (on your own computer) [Istallation guide](https://tilburgsciencehub.com/topics/automation/version-control/start-git/git/)
+* R - programming language used to run code [Installation guide R and RStudio](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+* RStudio - software that makes running R easier [Installation guide R and RStudio](https://tilburgsciencehub.com/topics/computer-setup/software-installation/rstudio/r/)
+* Make - tool to automate the workflow [Installation guide](https://tilburgsciencehub.com/topics/automation/automation-tools/makefiles/make])
+
+#### **Running The Code By Make**
+To run the code, follow these instructions:
+1. Install and run the required programs given in the previous section
+2. Fork this repository to create an own copy of this work
+3. Open your command line/terminal and run the following code:
+```
+git clone https://github.com/course-dprep/team-project-team_2
+```
+4. Set your working directory to `team-project-team_2` and run the following command:
+```
+make
+```
+5. When make has successfully run all the code, it will generate multiple graphs with the presentation of our analysis. 
+6. To clean the data of all raw and unnecessary data files created during the pipeline, run the following code in the command line/terminal: 
+```
+make clean
+```
 
 
 ## More resources
