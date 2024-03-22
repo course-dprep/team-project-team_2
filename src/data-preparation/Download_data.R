@@ -1,3 +1,14 @@
+# install all required packages
+#install.packages("tidyr")
+#install.packages("dplyr")
+#install.packages("ggplot2")
+#install.packages("tidyverse")
+#install.packages("readr")
+#install.packages("stats")
+#install.packages("sjPlot")
+
+
+
 #loading packages
 library(tidyverse)
 library(dplyr)
@@ -11,9 +22,10 @@ urls <- c(
   'https://datasets.imdbws.com/title.ratings.tsv.gz'
 )
 
-## Namin the URL's
+## Naming the URL's
 names <- c("Basics", "Ratings")
 
+## write the data to a TSV file
 for (i in 1:length(urls)) {
-  download.file(urls[i], paste0("data/", names[i], ".tsv.gz"), mode = "wb")
+  download.file(urls[i], paste0("../../gen/temp/", names[i], ".tsv.gz"), mode = "wb")
 }
