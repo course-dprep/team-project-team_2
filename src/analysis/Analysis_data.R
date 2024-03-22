@@ -1,6 +1,5 @@
-install.packages("gtsummary")
-library(gtsummary)
 #Loading packages
+library(gtsummary)
 library(ggplot2)
 library(dplyr)
 library(tidyr)
