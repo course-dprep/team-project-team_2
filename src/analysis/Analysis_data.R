@@ -16,7 +16,6 @@ install.packages("stats")
 
 install.packages("sjPlot")
 
-=======
 #Loading packages
 
 library(ggplot2)
@@ -28,7 +27,6 @@ library(stats)
 library(sjPlot)
 
 ####
-=======
 
 
 #download movies tsv
@@ -104,12 +102,16 @@ print(average_ratings_df)
 average_ratings_df$Year <- as.factor(average_ratings_df$Year)
 
 # Plot the variation of ratings for each genre over the years
-ggplot(average_ratings_df, aes(x = Year, y = AverageRating, color = Genre, group = Genre)) +
+plot_avgratingsgenresyear <- ggplot(average_ratings_df, aes(x = Year, y = AverageRating, color = Genre, group = Genre)) +
   geom_line() +
   geom_point() +
   labs(x = "Year", y = "Average Rating", title = "Variation of Ratings by Genre Over Years") +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#save plot in pdf
+ggsave("gen/output/average_rating_genres_each_year.pdf", plot_avgratingsgenresyear)
+
 
 
 #_______________________________________________________________________________________________________________________
@@ -135,7 +137,7 @@ combined_data <- data.frame(
   Ratings = c(norm_dist, comedy_dist))
 
 # Create a density plot
-ggplot(combined_data, aes(x = Ratings, fill = Distribution)) +
+plot_distrmovieratings <- ggplot(combined_data, aes(x = Ratings, fill = Distribution)) +
   geom_density(alpha = 0.5) +
   labs(title = "Density Plot of All genres Ratings and Comedy Ratings",
        x = "Ratings",
@@ -151,6 +153,8 @@ summary(model)
 #set results of linear regression in a table
 tab_model(model, show.ci = FALSE, p.style = "stars", dv.labels = c("Linear Regression Rating & Genres"))
 
+#save plot in pdf
+ggsave("gen/output/distribution_movie_ratings_vs_comedy.pdf", plot_distrmovieratings)
 
 
 #____________________
@@ -211,7 +215,7 @@ rating_summary_pivot <- rating_summary_pivot %>%
 get_color <- colorRampPalette(c("red", "green"))
 
 # Create bar plot
-ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference, fill = difference)) +
+plot_changeratingssince2000 <- ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference, fill = difference)) +
   geom_bar(stat = "identity") +
   scale_fill_gradientn(colors = get_color(100), limits = range(rating_summary_pivot$difference), name = "Difference in Rating") +
   labs(title = "Difference in Average Rating per Genre (2000 vs 2023)",
@@ -220,5 +224,6 @@ ggplot(rating_summary_pivot, aes(x = reorder(genres, difference), y = difference
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-
+#save plot in pdf
+ggsave("gen/output/total_genre_ratings_change_2000-2023.pdf", plot_changeratingssince2000)
 
