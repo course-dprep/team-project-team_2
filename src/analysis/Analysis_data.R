@@ -121,29 +121,6 @@ plot_distrmovieratings <- ggplot(combined_data, aes(x = Ratings, fill = Distribu
 ####save plot in pdf
 ggsave("../../gen/output/distribution_movie_ratings_vs_comedy.pdf", plot_distrmovieratings)
 
-#perform linear regression
-model <- lm(averageRating ~ comedy + documentary + animation + romance + news + sport + horror + fantasy + crime + mistery + thriller + scifi, data = movies)
-
-##################################################################
-# Create a summary table
-#tbl <- tbl_regression(model, conf.level = 0.95)  # specify confidence level
-
-# Print the summary table
-#tbl
-
-# Save the table to a PDF
-#pdf(file = "../../gen/output/table_linear_regression.pdf")
-#tbl
-#dev.off()
-
-
-#set results of linear regression in a table
-###table_linear_regression <- tab_model(model, show.ci = FALSE, p.style = "stars", dv.labels = c("Linear Regression Rating & Genres"))
-
-####save table in pdf
-####ggsave("../../gen/output/table_linear_regression.pdf", table_linear_regression)
-##################################################################
-
 #plot overall rating movies in years
 average_ratings_per_yearplot <- movies %>%
   group_by(startYear) %>%
