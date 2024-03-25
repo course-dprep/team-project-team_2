@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 # How do movie ratings differ per genre over time?
 
 __Exploring Evolution of IMDB Ratings Across Genres: A Data Preparation Project__
